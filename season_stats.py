@@ -70,8 +70,8 @@ for row in ktdata['resultSets'][0]['rowSet']:
     kt_buckets.append(row[24])
     kt_gamedates.append(datetime.strptime(row[3], '%b %d, %Y'))
 
-x = mdates.date2num(sc_gamedates)
-regression = np.polyfit(x,sc_buckets,1)
+x = mdates.date2num(kt_gamedates)
+regression = np.polyfit(x,kt_buckets,1)
 p4 = np.poly1d(regression)
 print(regression)
 
@@ -80,9 +80,9 @@ dd = mdates.num2date(xx)
 
 plt.figure(1)
 ##plt.plot(kd_gamedates,kd_buckets, 'b-o', label='kevin durant')
-plt.plot(sc_gamedates,sc_buckets, 'ro', label='stephen curry')
-##plt.plot(dg_gamedates,dg_buckets, 'y-o', label='dragmond green')
-##plt.plot(kt_gamedates,kt_buckets, 'g-o', label='klay thompson')
+##plt.plot(sc_gamedates,sc_buckets, 'b-o', label='stephen curry')
+##plt.plot(dg_gamedates,dg_buckets, 'b-o', label='dragmond green')
+plt.plot(kt_gamedates,kt_buckets, 'b-o', label='klay thompson')
 
 plt.plot(dd, p4(xx), '-r')
 plt.legend()
